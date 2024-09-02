@@ -13,7 +13,7 @@ const simulirajCetvrtfinale = (ekipa1, ekipa2) => {
   const snagaEkipe2 = (ekipa2.pobede * 0.5 + ekipa2.poeni * 0.3 + ekipa2.postignuto * 0.1) / (ekipa2.pobede + ekipa2.porazi + 1);
   const ukupnaSnaga = snagaEkipe1 + snagaEkipe2;
 
-  // Verovatnoca da prva ekipa pobedi
+  // Verovatnoca pobede prvog tima
   const verovatnocaPobede1 = snagaEkipe1 / ukupnaSnaga;
 
   // Rezultat se racuna kao ranije
@@ -36,15 +36,13 @@ const simulirajCetvrtfinale = (ekipa1, ekipa2) => {
 };
 
 const simulacijaPolufinalaFinala = (ekipa1, ekipa2) => {
-  // Izračunaj ukupni faktor snage za oba tima
   const snagaEkipe1 = (ekipa1.pobede ? 1 : 0) * 0.5 + ekipa1.rezultat * 0.3;
   const snagaEkipe2 = (ekipa2.pobede ? 1 : 0) * 0.5 + ekipa2.rezultat * 0.3;
 
-  // Normalizuj faktore snage
   const ukupnaSnaga = snagaEkipe1 + snagaEkipe2;
   const verovatnocaPobede1 = ukupnaSnaga === 0 ? 0.5 : snagaEkipe1 / ukupnaSnaga;
 
-  // Odredi rezultat za oba tima
+  // Odrededjivanje rezultata oba tima
   const rezultat1 = Math.floor(Math.random() * 20) + 80 + Math.floor((1 - verovatnocaPobede1) * 10);
   const rezultat2 = Math.floor(Math.random() * 20) + 80 + Math.floor(verovatnocaPobede1 * 10);
 
@@ -64,7 +62,7 @@ const simulacijaPolufinalaFinala = (ekipa1, ekipa2) => {
 };
 
 const kreirajZreb = (rangiraneEkipe) => {
-  // Rangirane ekipe svrstava u šešire
+  // Svrstavanje rangiranih ekipa u sesire
   const sesir1 = rangiraneEkipe.slice(0, 2);
   const sesir2 = rangiraneEkipe.slice(2, 4);
   const sesir3 = rangiraneEkipe.slice(4, 6);
@@ -172,7 +170,7 @@ const kreirajZreb = (rangiraneEkipe) => {
   );
 
   // Finalni poredak
-  console.log("\nFinalni poredak:");
+  console.log("\nMedalje");
   console.log(`   1. Mesto: ${pobednikFinala.ime}`);
   console.log(`   2. Mesto: ${gubitnikFinala.ime}`);
   console.log(`   3. Mesto: ${pobednikZa3Mesto.ime}`);

@@ -100,7 +100,6 @@ const simulirajGrupnuFazu = () => {
     tabele[grupa] = {};
     // Predstavlja niz svih timova u trenutnoj grupi
     const timovi = grupe[grupa];
-    // console.log(timovi);
 
     // Prva petlja prolazi kroz svaki tim u grupi
     for (let i = 0; i < timovi.length; i++) {
@@ -108,8 +107,7 @@ const simulirajGrupnuFazu = () => {
       for (let j = i + 1; j < timovi.length; j++) {
         // Vraca objekat koji sadrzi info. o rezultatu utakmice odigranih timova
         const rezultatIgra = simulirajUtakmicu(timovi[i], timovi[j]);
-        // console.log(rezultatIgra);
-        console.log(`        ${rezultatIgra.tim1.ime} - ${rezultatIgra.tim2.ime} (${rezultatIgra.tim1.rezultat}: ${rezultatIgra.tim2.rezultat})`);
+        console.log(`        ${rezultatIgra.tim1.ime} - ${rezultatIgra.tim2.ime} (${rezultatIgra.tim1.rezultat} : ${rezultatIgra.tim2.rezultat})`);
         azurirajTabelu(tabele[grupa], rezultatIgra.tim1, rezultatIgra.tim1.pobeda, rezultatIgra.tim1.rezultat, rezultatIgra.tim2.rezultat);
         azurirajTabelu(tabele[grupa], rezultatIgra.tim2, rezultatIgra.tim2.pobeda, rezultatIgra.tim2.rezultat, rezultatIgra.tim1.rezultat);
       }
@@ -125,11 +123,8 @@ const simulirajGrupnuFazu = () => {
     const timovi = Object.values(tabele[grupa]);
     const sortiraniTimovi = rangirajTimove(timovi);
 
-    // console.log(sortiraniTimovi);
-
     console.log(`   Grupa ${grupa} (Tim - pobede / porazi / bodovi / postignuto koševa / primljeno koševa / koš razlika): `);
     sortiraniTimovi.forEach((tim, index) => {
-      // console.log(tim);
       const kosRazlika = tim.postignuto - tim.primljeno;
       console.log(
         `       ${index + 1}. ${tim.ime}: ${tim.pobede} / ${tim.porazi} / ${tim.poeni} / ${tim.postignuto} / ${tim.primljeno} / ${
